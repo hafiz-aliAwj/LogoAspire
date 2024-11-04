@@ -2,22 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family:  'poppins';
+  src: url('fonts/Poppins-Regular.ttf');
+}
+@font-face {
+  font-family:  'poppinsBold';
+  src: url('fonts/Poppins-ExtraBold.ttf');
+}
+@font-face {
+  font-family:  'poppinsMedium';
+  src: url('fonts/Poppins-Medium.ttf');
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes borderSlide {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
   }
 }
-
+h1,.boldtext{
+  font-family: poppinsBold !important;
+}
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  font-family:poppins;
 }
 
 @layer utilities {
@@ -25,3 +36,332 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+/* Style the main element */
+.border-animate {
+  position: relative;
+  display: inline-block; /* Inline-block so that the border aligns with text */
+  padding-bottom: 4px; /* Space for the border to animate under */
+  font-size: 14px;
+  padding: 5px 13px;
+  font-weight: bold;
+  /* color: #333333; */
+  text-decoration: none;
+}
+
+/* Define the animated border using ::after */
+.border-animate::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px; /* Adjust thickness as needed */
+  background-color: #0E1863; /* Adjust color as needed */
+  transition: width 0.5s ease; /* Control the duration and easing */
+}
+
+/* Trigger the animation on hover */
+.border-animate:hover::after {
+  width: 100%;
+  animation: borderSlide 0.5s forwards;
+}
+.border-animate:active::after {
+  width: 100%;
+  animation: borderSlide 0.5s forwards;
+}
+.container h2{
+  font-family: poppinsMedium !important;
+}
+
+
+.\[\&_svg\]\:size-4 svg {
+  width: auto !important;
+  height: auto !important;
+}
+
+
+
+
+
+
+/* Apply rounded and hidden buttons for scrollbars */
+
+
+#style-2::-webkit-scrollbar-track
+{
+scrollbar-width: thin;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+  scrollbar-width: thin;
+
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+  /* scrollbar-width: thin; */
+  height: 10px !important; 
+	border-radius: 10px;
+	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
+	background-color: #0E1863;
+}
+.before-bg {
+  color: white;
+    position: relative;
+    right: -11px;
+    z-index: 1;
+}
+.before-bg::before {
+  content: '';
+  position: absolute;
+  background: url('https://www.logoaspire.com/assets/images/webp/mix/y_bg.webp');
+  width: 62px;
+  height: 217px;
+  background-size: cover;
+  top: -145px;
+  left: -14px;
+  z-index: -1;
+}
+.custom-btn{
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+  text-transform: uppercase;
+  background-color: transparent;
+  -webkit-transition: background-color 0.3s ease 0s;
+  transition: background-color 0.3s ease 0s;
+  padding: 11px 95px 11px 30px;
+  z-index: 1;
+  font-family: 'Poppins';
+}
+.custom-btn::before,.custom-btn::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  left: 0;
+  top: 0;
+  z-index: -2;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  background-image: linear-gradient(to right, #34D2FC
+, #1064ab);
+  z-index: -2;
+}
+.custom-btn::after{
+z-index: -1;
+  opacity: 0;
+    background: linear-gradient(to right, #1064ab 0%, #34D2FC    100%);
+}
+.custom-btn:hover::after{
+  opacity: 1;
+}
+.moving-circle{
+  position: absolute;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: white;
+    width: 50px;
+    height: 1px;
+}
+.moving-circle::before{
+  content: '';
+    position: absolute;
+    left: -5px;
+    top: -3px;
+    background-color: white;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: moving-circle 7s infinite linear;
+}
+/* .custom-btn:hover::before {
+  transform: scale(1); 
+} */
+ @keyframes moving-circle {
+  0% {
+    left: -5px;
+}
+
+50% {
+    left: 100%;
+}
+100% {
+    left: -5px;
+}
+ }
+ .industry-number::before{
+  background-image: url('https://www.logoaspire.com/assets/images/webp/mix/plus.webp');
+    position: relative;
+    content: '';
+    bottom: -104px;
+    right: -103px;
+    width: 41px;
+    height: 38px;
+    background-position: -133px -5px;
+ }
+ .form-wrap{
+  padding: 92px 0;
+    position: relative;
+ }
+ .form-wrap::before{
+  display: block;
+  background-color: #e3e3e3;
+    height: 198px;
+    content: '';
+    position: absolute;
+    top: 0%;
+    width: 100%;
+ }
+ .quote{
+  background: white;
+  color: #333333;
+  max-width: 280px;
+  padding: 25px 25px;
+  position: absolute;
+  bottom: calc(100% - 30px);
+  box-shadow: -2.232px 31.922px 43px 0 rgba(0, 0, 0, 0.14);
+  font-family: poppinsBold;
+ }
+ .quote p {
+  color: #333333;
+  font-size: 32px;
+  margin: 0;
+  font-weight: 700;
+  line-height: 40px;
+ }
+ .quote::after{
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 25px solid white;
+  border-left: 25px solid transparent;
+ }
+ .form-child-wrap::before{
+  content: '';
+    position: absolute;
+    background-image: url('https://www.logoaspire.com/assets/images/webp/mix/footer-form-before.webp');
+    background-size: contain;
+    width: 353px;
+    height: 457px;
+    background-repeat: no-repeat;
+    left: -130px;
+ }
+ .form-child-wrap::after{
+  content: '';
+    position: absolute;
+    background-image: url('https://www.logoaspire.com/assets/images/webp/mix/footer-form-after.webp');
+    background-size: contain;
+    width: 589px;
+    height: 542px;
+    background-repeat: no-repeat;
+    right: -250px;
+ }.form-wrap{
+right: -60px;
+ }
+ .form-child-wrap{
+position: relative;
+display: flex;
+ }
+ .form-wrap{
+  padding: 92px 0;
+  position: relative;
+ }
+ .herosec h1,.herosec h2,.herosec p{
+  color: white !important;
+ }
+ a{
+  background-color: transparent;
+ }
+ .herosec #transparent{
+  border: 2px solid white;
+  background: none  !important;
+ }
+ .herosec #transparent::before,.herosec #transparent::after{
+background: none !important;
+
+ }
+ #non-transparent{
+  padding: 11px 40px;
+ }
