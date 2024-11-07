@@ -6,6 +6,7 @@ import ServicesSection from "./components/ServiceSection";
 import { ShowcaseSection } from "./components/ShowcaseSection";
 import { PackageSection } from "./components/PackageSection";
 import { ContactusSection } from "./components/ContactusSection";
+import HeroSecondarySection from "./components/HeroSecondarySection";
 
 export default function Home() {
   return (

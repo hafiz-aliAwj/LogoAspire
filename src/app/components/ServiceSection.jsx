@@ -45,11 +45,7 @@ export const services = {
       title: "Brand Identity",
       description: "Create a unique visual identity for your brand",
     },
-    {
-      icon: "https://www.vectorlabz.com/assets/images/webp/service-type/animation",
-      title: "Brand Identity",
-      description: "Create a unique visual identity for your brand",
-    },
+   
   ],
   "Web Development": [
     {
@@ -154,7 +150,7 @@ export const services = {
 
 export default function ServicesSection() {
   const servicesList = Object.keys(services);
-
+console.log(servicesList)
   const [activeCategory, setActiveCategory] = useState(servicesList[0]);
 
   return (
@@ -169,7 +165,7 @@ export default function ServicesSection() {
         />
        <CategorySection services={services} setActiveCategory={setActiveCategory} showSubCategories={false} activeCategory={activeCategory}/>
       {/* <CategorySection services={services[activeCategory]} setActiveCategory={setActiveCategory} /> */}
-       <div className="flex m-auto items-center md:max-w-[1170px] justify-around flex-wrap">
+       <div className="flex m-auto items-center md:max-w-[1170px] justify-center flex-wrap">
         {services[activeCategory].map((service, index) => (
           <div className=" md:w-[23.5%] md:mr-[15px] mb-[20px]">
             <div

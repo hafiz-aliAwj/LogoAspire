@@ -2,6 +2,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./components/Header";
 import { ContactUsForm } from "./components/ContactUsForm";
+import Footer from "./components/Footer";
+import { services } from "./components/ServiceSection";
 
 
 
@@ -11,6 +13,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  
   return (
     <html lang="en">
       <body
@@ -19,6 +22,7 @@ export default function RootLayout({ children }) {
         <Navbar/>
         {children}
         <ContactUsForm/>
+        <Footer services={services}/>
       </body>
     </html>
   );

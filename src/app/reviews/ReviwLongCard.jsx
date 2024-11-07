@@ -5,10 +5,10 @@ import { StarIcon } from "lucide-react";
 
 export const ReviwLongCard = () => {
   return (
-    <div>
+  
       <Card
        
-        className={`flex-[0_0_33.33%]  w-[366.67px]  h-[550px] hover:border-secondaryColor hover:shadow-2xl bg-white border-2 border-[#d7d7d7] rounded-lg p-6 mb-8 relative z-10 transition-all duration-400 ease-in-out`}
+        className={`flex-[0_0_31.33%]  mr-[15px] w-[33.33%]  h-[550px] hover:border-secondaryColor hover:shadow-2xl bg-white border-2 border-[#d7d7d7] rounded-lg  mb-8 relative z-10 transition-all duration-400 ease-in-out`}
       >
         <CardHeader className="border-b mb-[10px] pb-[20px] border-darkGray transition-all flex flex-col duration-300 ease-in-out">
           <Image
@@ -29,12 +29,12 @@ export const ReviwLongCard = () => {
           </p>
         </CardContent>
         <CardFooter>
-            <div className="flex flex-col gap-[5px] items-center">
+            <div className="flex flex-col gap-[5px] ">
                 <h2 className="text-[24px] text-[#282828]">Samantha Manning</h2>
                 <div className="flex items-center gap-[15px]">
 
                 <p>Director of Operations</p> 
-               <ul className="inline-block">
+               <ul className="flex">
                {
                     Array.from({length:5}).map((elem)=>(
                         <li>
@@ -48,6 +48,6 @@ export const ReviwLongCard = () => {
             </div>
         </CardFooter>
       </Card>
-    </div>
+    
   );
 };

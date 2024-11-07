@@ -16,18 +16,19 @@ import {
   navigationMenuTriggerStyle,
 } from "@/app/components/ui/navigation-menu"
 import { cn } from "@/lib/utils"
-const services = [
-  "Website Development",
-  "Logo Design",
-  "Ecommerce Solutions",
-  "Animation",
-  "Illustration",
-  "Marketing Collateral",
-  "Mobile Apps",
-  "SEO Services",
-  "SMM",
-  "Creative Copywriting"
-]
+import { services } from "./ServiceSection"
+// const services = [
+//   "Website Development",
+//   "Logo Design",
+//   "Ecommerce Solutions",
+//   "Animation",
+//   "Illustration",
+//   "Marketing Collateral",
+//   "Mobile Apps",
+//   "SEO Services",
+//   "SMM",
+//   "Creative Copywriting"
+// ]
 
 export default function Navbar() {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
@@ -55,7 +56,7 @@ export default function Navbar() {
     <nav className={`fixed border-b border-[#ddd7db] top-0 left-0 right-0 bg-white z-50 transition-shadow duration-300 ${hasScrolled ? 'shadow-[0px_2px_20px_1px_#e0e0e0]' : ''}`}>
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
-          <div className="flex items-center w-[30%]">
+          <div className="flex items-center w-[20%]">
             <Link href="/" className="flex-shrink-0">
               <Image src="data:image/webp;base64,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" alt="Logo" width={32} height={32} />
             </Link>
@@ -70,8 +71,8 @@ export default function Navbar() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Services</NavigationMenuTrigger>
           <NavigationMenuContent>
-          {services.map((service,idx) => (
-                      <ListItem title={service} key={service}/>
+          {Object.keys(services).map((service,idx) => (
+                     <Link href={`/${service.replace(" ", "-")}`}> <ListItem title={service} key={service}/></Link>
                     
                     ))}
           </NavigationMenuContent>
@@ -80,6 +81,7 @@ export default function Navbar() {
           </NavigationMenu>
            
             <NavLink href="/showcase">Showcase</NavLink>
+            <NavLink href="/reviews">Review</NavLink>
           </div>
           <div className="hidden md:flex items-center space-x-6 ">
             <a  href="tel:(628)313-4168" className="flex gap-2 items-center text-gray-600">

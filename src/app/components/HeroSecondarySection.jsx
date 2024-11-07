@@ -34,10 +34,10 @@ export default function HeroSecondarySection({
     <section
       className={` pt-[80px] ${bannerImage} bg-center bg-no-repeat bg-cover min-h-[550px] flex items-center ${className}`}
     >
-      <div className="container mx-auto w-full px-4  flex  justify-between items-center">
+      <div className="container  mx-auto w-full px-4  flex  justify-between items-center">
         <div className="w-full  mb-8 md:mb-0 px-[15px]">
           <h2 className="   text-[16px] text-gray m-0">{headingTop}</h2>
-          <h1 className="md:text-[54px] md:leading-[70px]  bg-gradient-to-r from-[#2db2b8]    to-[#1064ab]   md:font-extrabold mb-4 bg-clip-text text-transparent ">
+          <h1 className="md:text-[54px] md:leading-[70px]  bg-gradient-to-r from-[#34D2FC]    to-[#1064ab]   md:font-extrabold mb-4 bg-clip-text text-transparent ">
             {headingMiddle}
           </h1>
           <p className="text-[#1d1a42] mb-8 text-[16px]">{para}</p>
@@ -57,13 +57,13 @@ export default function HeroSecondarySection({
 
         </div>
         <div className=" md:w-[90%] hidden md:block  relative">
-          <Image
+          {sideImage?<Image
             src={sideImage}
-            alt="Design Showcase"
+            alt=""
             width={670}
             height={500}
             className="w-full "
-          />
+          />:""}
           
           {/* <div className="absolute top-0 right-0 -mt-4 -mr-4 bg-white p-2 rounded-lg shadow-md">
             <Image src="/placeholder.svg?height=40&width=40" alt="HTML5" width={40} height={40} />

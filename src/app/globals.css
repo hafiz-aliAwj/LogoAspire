@@ -152,7 +152,7 @@ body {
 /* Apply rounded and hidden buttons for scrollbars */
 
 
-#style-2::-webkit-scrollbar-track
+#style-2::-webkit-scrollbar-track,::-webkit-scrollbar-track
 {
 scrollbar-width: thin;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -160,7 +160,7 @@ scrollbar-width: thin;
 	background-color: #F5F5F5;
 }
 
-#style-2::-webkit-scrollbar
+#style-2::-webkit-scrollbar,body::-webkit-scrollbar
 {
 	width: 8px;
 	background-color: #F5F5F5;
@@ -168,13 +168,16 @@ scrollbar-width: thin;
 
 }
 
-#style-2::-webkit-scrollbar-thumb
+#style-2::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb
 {
   /* scrollbar-width: thin; */
   height: 10px !important; 
 	border-radius: 10px;
 	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
 	background-color: #0E1863;
+}
+body::-webkit-scrollbar-thumb{
+  border-radius: 0px;
 }
 .before-bg {
   color: white;
@@ -365,3 +368,31 @@ background: none !important;
  #non-transparent{
   padding: 11px 40px;
  }
+ .element-16 {
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.element {
+  position: absolute;
+}
+.element-6 {
+  bottom: 4rem;
+  right: 2rem;
+  z-index: -1;
+  animation: rotateElement 6000ms infinite linear;
+}
+@keyframes rotateElement {
+  0% {
+    transform: rotate(0);
+}
+100% {
+    transform: rotate(360deg);
+}
+}
+.element-15 {
+  bottom: 0;
+  left: -40px;
+  z-index: -1;
+}
