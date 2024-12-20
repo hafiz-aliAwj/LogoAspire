@@ -154,8 +154,13 @@ console.log(servicesList)
   const [activeCategory, setActiveCategory] = useState(servicesList[0]);
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section className="py-16 bg-gray-50 relative">
+      <div class="element element-6 hidden md:block"><img src="https://www.logoaspire.com/assets/images/webp/elements/element-5.webp"/></div>
+      <div class="element element-3 hidden md:block"><img src="https://www.logoaspire.com/assets/images/webp/elements/element-3.webp"/></div>
+      <div class="element element-5 hidden md:block"><img src="https://www.logoaspire.com/assets/images/webp/elements/element-4.webp"/></div>
+      <div class="element element-4 hidden md:block"><img src="https://www.logoaspire.com/assets/images/webp/elements/element-4.webp"/></div>
+
+      <div className="container mx-auto max-w-[1170px] px-4">
         <HeadingSection
           headingTop={"Our unparalleled websites"}
           headingMiddle={"To Build Concrete Digital Existence."}
@@ -167,10 +172,10 @@ console.log(servicesList)
       {/* <CategorySection services={services[activeCategory]} setActiveCategory={setActiveCategory} /> */}
        <div className="flex m-auto items-center md:max-w-[1170px] justify-center flex-wrap">
         {services[activeCategory].map((service, index) => (
-          <div className=" md:w-[23.5%] md:mr-[15px] mb-[20px]">
+          <div className=" md:w-[23.5%] w-full md:mr-[15px] mb-[20px]">
             <div
               key={index}
-              className="bg-transparent p-3 md:p-0  cursor-pointer  flex flex-col justify-center items-center h-[221px] border-[#cccccc] hover:bg-white  border transition-all duration-500   hover:shadow-[0_29px_62px_0px_rgba(0,0,0,0.19)]  "
+              className="bg-white flex-wrap p-3 md:p-0  cursor-pointer  flex flex-col justify-center items-center h-[221px] border-[#cccccc] hover:bg-white  border transition-all duration-500   hover:shadow-[0_29px_62px_0px_rgba(0,0,0,0.19)]  "
             >
               <div className="mb-4">
                 <img

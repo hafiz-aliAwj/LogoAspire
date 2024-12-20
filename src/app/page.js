@@ -7,14 +7,16 @@ import { ShowcaseSection } from "./components/ShowcaseSection";
 import { PackageSection } from "./components/PackageSection";
 import { ContactusSection } from "./components/ContactusSection";
 import HeroSecondarySection from "./components/HeroSecondarySection";
+import { AboutSection } from "./components/AboutSection";
 
 export default function Home() {
   return (
-<div className="App">
+<div className="App ">
 
 <HeroSection/>
 <UniqueFeatures/>
 <ServicesSection/>
+<AboutSection/>
 <ShowcaseSection/>
 <PackageSection/>
 <ContactusSection/>

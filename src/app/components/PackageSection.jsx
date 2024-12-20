@@ -11,10 +11,10 @@ export const PackageSection = () => {
       );
   return (
 
-    <div className=' py-[64px] px-[15px] container max-w-[1170px] mx-auto'>
+    <div className=' py-[64px] px-[15px] container max-w-[320px] md:max-w-[1170px] sm:max-w-screen-sm mx-auto'>
         <HeadingSection headingTop={'Our Price Model'} headingMiddle={'That Suits Everyone!'} para={'To provide your business with customized and unique website development services at reasonable prices'}/>
        <CategorySection services={services} setActiveCategory={setActiveCategory}/>
-      <div className='flex w-full gap-5 '>
+      <div className='md:flex-row flex w-full gap-5  flex-col'>
 
        {Array.from({ length: 3 }).map((_, index) => (
            <PackageCard key={index} />

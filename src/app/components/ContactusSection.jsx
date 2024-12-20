@@ -15,9 +15,9 @@ export const ContactusSection = () => {
         className2={"pt-[24px] text-[24px]"}
         classNameSpan={"before-bg"}
       />
-      <div className="flex items-center justify-around w-full">
-        <div className="flex items-center">
-          <div className="py-[20px] px-[24px] border-2 border-black">
+      <div className="flex items-center flex-col md:flex-row justify-center  md:justify-around w-full">
+        <div className="flex  items-center">
+          <div className="py-[20px]  px-[24px] border-2 border-black">
             <Image
               width={40}
               height={55}

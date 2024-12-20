@@ -15,11 +15,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-auto">
       <body
         className={` antialiased`}
       >
-        <Navbar/>
+        <Navbar services={services}/>
         {children}
         <ContactUsForm/>
         <Footer services={services}/>

@@ -31,33 +31,36 @@ export const ContactUsForm = () => {
   };
   return (
     <div className="form-wrap">
-      <span className="form-child-wrap"></span>
-      <div className="container flex relative ">
-        <div className="px-[15px] w-[42%] flex-[0_0_42%] relative">
-          <div className="bg-gradient-to-r from-[#111111] to-[#0b0b0b] flex flex-col justify-center    h-[410px] mt-3 p-[85px_60px_60px_40px]">
-            <div class="quote">
+      <span className="form-child-wrap hidden md:flex"></span>
+      <div className="md:container max-w-full  flex relative md:flex-row flex-col">
+        <div className="px-[15px] md:w-[42%] w-full flex-[0_0_42%] relative">
+          <div className="bg-gradient-to-r from-[#111111] to-[#0b0b0b] flex flex-col justify-center w-full   h-auto md:h-[410px] mt-3 px-[20px] py-[25px] md:p-[85px_60px_60px_40px]">
+            <div class="md:block quote hidden ">
               <p>Let creativity take over</p>
             </div>
-            <h2 className="text-[18px]  font-semibold mb-[30px] text-[#ffffff7d]">
+            <div class="md:hidden   block bg-white p-[20px] mb-[20px]">
+              <p className="text-[16px] font-bold text-gray ">Let creativity take over</p>
+            </div>
+            <h2 className="text-[18px]  font-semibold mb-[10px] md:mb-[30px] text-[#ffffff7d]">
               Ask us anything, we have the friendliest customer service folks
             </h2>
             <a
               href="tel:(628)313-4168"
-              className="mb-2 text-2xl font-semibold text-white no-underline"
+              className="mb-2 text-[16px] md:text-2xl font-semibold text-white no-underline"
             >
               (628) 313-4168
             </a>
-            <a className="mb-2 text-2xl font-semibold text-white no-underline">
+            <a className="mb-2 text-[16px] md:text-2xl font-semibold text-white no-underline">
               info@logoaspire.com
             </a>
-            <Button className="font-semibold mt-2 px-6 py-3 bg-white rounded w-2/3 text-[#333333] ">
+            <Button className="font-semibold mt-2 px-6 py-3 bg-white rounded w-full  md:w-2/3 text-[#333333] ">
               <strong className="text-secondaryColor">Chat now</strong>
               to avail this offer
             </Button>
           </div>
         </div>
-        <div className="relative w-[42%] px-[15px] flex-[0_0_42%] ">
-          <h1 className="text-secondaryColor text-[50px] font-bold ">
+        <div className="relative max-w-full md:w-[42%] px-[15px] flex-[0_0_42%] ">
+          <h1 className="text-secondaryColor text-[30px] md:text-[50px] font-bold ">
             Let’s get started!
           </h1>
           <h3 className="text-darkGray text-[16px] mb-4">

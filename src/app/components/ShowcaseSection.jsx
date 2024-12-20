@@ -10,7 +10,7 @@ import { Dialog, DialogContent } from "@/app/components/ui/dialog";
 
 import { Button } from "@/app/components/ui/button";
 import Image from "next/image";
-export const ShowcaseSection = () => {
+export const ShowcaseSection = ({children}) => {
   
 
   const categoryWiseServices = [
@@ -54,8 +54,8 @@ export const ShowcaseSection = () => {
     setCurrentImageIndex((prevIndex) => prevIndex - 1);
   };
   return (
-    <div className="container max-w-[1356px] mx-auto relative">
-      <div className="container max-w-[1170px] mx-auto">
+    <div className="container max-w-[1356px] px-[15px] mx-auto relative">
+      <div className="container max-w-[1170px]  mx-auto pt-[90px]">
       <HeadingSection
         headingTop={"Goal and Client-Oriented Web Designs"}
         headingMiddle={"Together With Focused Marketing Methods"}
@@ -73,11 +73,11 @@ export const ShowcaseSection = () => {
       </div>
 
       
-      <div className="flex m-auto items-center md:max-w-[1300px] justify-center flex-wrap">
+      <div className="flex m-auto items-center  md:max-w-[1300px] justify-center flex-wrap">
         {services[activeCategory].map((service, index) => (
           <div
             onClick={() => openModal(index)}
-            className="relative md:flex-[0_0_23.5%] md:mr-[15px] mb-[20px] overflow-hidden"
+            className="relative showcase-container md:flex-[0_0_23.5%] md:mr-[15px] mb-[20px] overflow-hidden"
           >
             <img
               src={`https://www.logoaspire.com/assets/images/logo-tab-port/logo-Industry-wise/apparels-clothing/${
@@ -85,9 +85,9 @@ export const ShowcaseSection = () => {
               }.jpg`}
               className="block w-full h-auto"
             />
-            <div className="absolute bottom-0 right-0 w-full h-full bg-[#0e18636b] opacity-0 transition-all duration-300 ease-in-out hover:opacity-100 hover:bottom-0 hover:right-0 flex items-center justify-center">
-              <Plus className="text-white w-[50px] h-[50px]" strokeWidth={5} />
-            </div>
+           <div className="div-container">
+  <Plus className="text-white w-[50px] h-[50px]" strokeWidth={5} />
+</div>
           </div>
         ))}
       </div>
@@ -136,9 +136,7 @@ export const ShowcaseSection = () => {
           </div>
         </DialogContent>
       </Dialog>
-   <div class="element element-15"><img src="https://www.logoaspire.com/assets/images/webp/elements/element-15.webp"/></div>
-
-      <div class="element element-6"><img src="https://www.logoaspire.com/assets/images/webp/elements/element-5.webp"/></div>
+  {children}
     </div>
   );
 };

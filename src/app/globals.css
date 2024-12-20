@@ -14,6 +14,9 @@
   font-family:  'poppinsMedium';
   src: url('fonts/Poppins-Medium.ttf');
 }
+body{
+  overflow: auto;
+}
 
 @keyframes borderSlide {
   0% {
@@ -320,6 +323,7 @@ z-index: -1;
   height: 0;
   border-top: 25px solid white;
   border-left: 25px solid transparent;
+  
  }
  .form-child-wrap::before{
   content: '';
@@ -345,7 +349,7 @@ right: -60px;
  }
  .form-child-wrap{
 position: relative;
-display: flex;
+
  }
  .form-wrap{
   padding: 92px 0;
@@ -395,4 +399,64 @@ background: none !important;
   bottom: 0;
   left: -40px;
   z-index: -1;
+}
+.element-5 {
+  bottom: 4rem;
+  left: 2.6rem;
+  animation: rotateElement 6000ms infinite linear;
+  z-index: -1;
+}.element-3 {
+  left: 0rem;
+  top: 4rem;
+  animation: rotateElement 6000ms infinite linear;
+  z-index: -1;
+
+}
+.element-4 {
+  right: 2rem;
+  z-index: -1;
+  top: 4rem;
+  animation: rotateElement 6000ms infinite linear;
+}
+/* Keyframes for the slide-up animation */
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%); /* Start from bottom */
+    opacity: 0; /* Start invisible */
+  }
+  100% {
+    transform: translateY(0); /* End at normal position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+/* Default state of the div */
+.div-container {
+  position: absolute;
+    right: 0px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.6s ease-in-out;
+    opacity: 0;
+    background-color: rgb(14 24 99 / 53%);
+}
+
+/* On hover, trigger the animation */
+.showcase-container:hover .div-container{
+  opacity: 1;
+  height: 100%;
+  width: 100%;
+}
+
+
+/* Plus icon styling (no change here) */
+.plus-icon {
+  color: white;
+  width: 50px;
+  height: 50px;
+  stroke-width: 5;
 }

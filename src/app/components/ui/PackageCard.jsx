@@ -11,7 +11,7 @@ export default function PackageCard() {
     <Card
       onMouseOver={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
-      className={`w-[366.67px] h-[550px] cursor-pointer transition-all hover:border-none duration-100 ease-in-out transform hover:text-[#fff] 
+      className={`md:w-[366.67px] md:h-[550px] cursor-pointer transition-all hover:border-none duration-100 ease-in-out transform hover:text-[#fff] 
       hover:bg-gradient-to-tr hover:from-[#2baeb7] hover:to-[#0874b2] bg-cover flex bg-no-repeat  justify-around
       bg-center flex-col bg-[url('https://www.logoaspire.com/assets/images/webp/mix/pricing-bg.webp')] 
       border-2 border-secondaryColor shadow-lg rounded-lg`}

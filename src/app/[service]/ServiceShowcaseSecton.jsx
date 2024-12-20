@@ -26,7 +26,7 @@ export const ServiceShowcaseSecton = ({service}) => {
   return (
     <div>
         <HeadingSection headingTop={'Our Recent Projects'} headingMiddle={'Browse Our Portfolio To See Creative Grind.'} para={'We create a logo with an out of the box design sense combined with words that grab the interest of your target audience.'}/>
-        <div className="flex m-auto items-center md:max-w-[1300px] justify-around flex-wrap">
+        <div className="flex m-auto w-[320px] px-[15px] items-center md:max-w-[1300px] justify-center flex-wrap">
         {services[service]?.map((service, index) => (
           <div
             onClick={() => openModal(index)}
