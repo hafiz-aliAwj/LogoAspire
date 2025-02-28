@@ -1,6 +1,6 @@
 import React from 'react'
-import HeroSecondarySection from '../components/HeroSecondarySection'
-import { ShowcaseSection } from '../components/ShowcaseSection'
+import HeroSecondarySection from '@/components/HeroSecondarySection'
+import { ShowcaseSection } from '@/components/ShowcaseSection'
 
  const page = () => {
   return (

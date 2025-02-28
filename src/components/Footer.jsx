@@ -4,8 +4,11 @@ import Link from "next/link"
 import { services } from "./ServiceSection"
 
 export default function Footer() {
+
+  
   return (
-    <footer className="bg-black bg-center bg-no-repeat bg-cover bg-[url('https://www.logoaspire.com/assets/images/bg/footer-bg.jpg')] text-white py-8 px-4 md:px-8">
+
+    <footer id="footer"  className="bg-black bg-center bg-no-repeat bg-cover bg-[url('https://www.logoaspire.com/assets/images/bg/footer-bg.jpg')] text-white py-8 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {/* Logo and Company Description */}

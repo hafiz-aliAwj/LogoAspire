@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, CardFooter,CardHeader } from "../components/ui/card";
+import { Card, CardContent, CardFooter,CardHeader } from "@/components/ui/card";
 import Image from "next/image";
 import { StarIcon } from "lucide-react";
 

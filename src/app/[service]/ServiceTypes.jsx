@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { services } from "../components/ServiceSection";
-import { Dialog, DialogContent } from "@/app/components/ui/dialog";
-import { Button } from "@/app/components/ui/button";
+import { services } from "@/components/ServiceSection";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import {
   ArrowLeft,
   ArrowLeftSquare,

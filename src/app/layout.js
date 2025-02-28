@@ -1,9 +1,9 @@
-import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "./components/Header";
-import { ContactUsForm } from "./components/ContactUsForm";
-import Footer from "./components/Footer";
-import { services } from "./components/ServiceSection";
+import Navbar from "@/components/Header";
+import { ContactUsForm } from "@/components/ContactUsForm";
+import Footer from "@/components/Footer";
+import { services } from "@/components/ServiceSection";
+import { AuthProvider } from "@/context/AuthContext";
 
 
 
@@ -20,8 +20,8 @@ export default function RootLayout({ children }) {
         className={` antialiased`}
       >
         <Navbar services={services}/>
-        {children}
-        <ContactUsForm/>
+        <AuthProvider>{children}</AuthProvider>
+        
         <Footer services={services}/>
       </body>
     </html>

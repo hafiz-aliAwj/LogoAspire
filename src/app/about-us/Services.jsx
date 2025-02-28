@@ -2,11 +2,11 @@
 import { useState } from 'react'
 
 
-import { HeadingSection } from '../components/ui/Heading'
+import { HeadingSection } from '@/components/ui/Heading'
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight,ArrowRight } from 'lucide-react'
-import { services } from '../components/ServiceSection'
+import { services } from '@/components/ServiceSection'
 
 export default function ServiceCard({ name, imageUrl }) {
     const [currentIndex, setCurrentIndex] = useState(0)

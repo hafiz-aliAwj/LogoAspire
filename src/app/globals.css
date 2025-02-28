@@ -7,6 +7,10 @@
   src: url('fonts/Poppins-Regular.ttf');
 }
 @font-face {
+  font-family:  'poppinsLight';
+  src: url('fonts/Poppins-Light.ttf');
+}
+@font-face {
   font-family:  'poppinsBold';
   src: url('fonts/Poppins-ExtraBold.ttf');
 }
@@ -17,7 +21,9 @@
 body{
   overflow: auto;
 }
-
+h4,h5{
+  font-family: 'poppinsLight';
+}
 @keyframes borderSlide {
   0% {
     width: 0;
@@ -215,6 +221,27 @@ body::-webkit-scrollbar-thumb{
   z-index: 1;
   font-family: 'Poppins';
 }
+.custom-overlay {
+  background: rgba(0, 0, 0, 0.8); /* Dark overlay */
+}
+
+.custom-modal {
+  max-width: 1000px !important;
+  height: 530px!important;
+  width: 970px!important;
+  background: linear-gradient(to right, #0E1863, #2b3fd8) !important;
+  color: white!important;
+  padding: 2.5rem!important; /* Equivalent to p-10 in Tailwind */
+  border-radius: 0.5rem !important; /* Equivalent to rounded-lg */
+  outline: none!important;
+  position: relative;
+  overflow-y: visible !important;
+
+  
+  gap: 1.5rem; /* For spacing between content */
+}
+
+
 .custom-btn::before,.custom-btn::after {
   content: '';
   position: absolute;
@@ -274,16 +301,19 @@ z-index: -1;
     left: -5px;
 }
  }
- .industry-number::before{
-  background-image: url('https://www.logoaspire.com/assets/images/webp/mix/plus.webp');
-    position: relative;
-    content: '';
-    bottom: -104px;
-    right: -103px;
-    width: 41px;
-    height: 38px;
-    background-position: -133px -5px;
+ @media screen and (min-width: 800px) {
+  .industry-number::before{
+    background-image: url('https://www.logoaspire.com/assets/images/webp/mix/plus.webp');
+      position: relative;
+      content: '';
+      bottom: -104px;
+      right: -103px;
+      width: 41px;
+      height: 38px;
+      background-position: -133px -5px;
+   }
  }
+ 
  .form-wrap{
   padding: 92px 0;
     position: relative;
@@ -344,8 +374,6 @@ z-index: -1;
     height: 542px;
     background-repeat: no-repeat;
     right: -250px;
- }.form-wrap{
-right: -60px;
  }
  .form-child-wrap{
 position: relative;
@@ -429,7 +457,9 @@ background: none !important;
     opacity: 1; /* Fully visible */
   }
 }
-
+strong{
+  font-weight: 600;
+}
 /* Default state of the div */
 .div-container {
   position: absolute;

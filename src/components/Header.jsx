@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
 
-import { Button } from "@/app/components/ui/button";
+import { Button } from "./ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -14,7 +14,12 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/app/components/ui/navigation-menu";
+} from "./ui/navigation-menu";
+import { DialogTrigger,Dialog } from "./ui/dialog";
+
+import { ContactUsModal, ContactUsPopup } from "./ContactUsCard";
+import { AuthContext } from "@/context/AuthContext";
+
 
 export default function Navbar({services}) {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -35,7 +40,9 @@ export default function Navbar({services}) {
   }, []);
 
   return (
-    <nav className={`fixed border-b border-[#ddd7db] top-0 left-0 right-0 bg-white z-50 transition-shadow duration-300 ${hasScrolled ? 'shadow-[0px_2px_20px_1px_#e0e0e0]' : ''} max-w-[320px] md:max-w-[1356px] md:w-[1356px] `}>
+    <Dialog>
+      <ContactUsModal/>
+    <nav className={`fixed  border-b z-[999] border-[#ddd7db] top-0 left-0 right-0 bg-white  transition-shadow duration-300 ${hasScrolled ? 'shadow-[0px_2px_20px_1px_#e0e0e0]' : ''}   lg:w-[1356px] w-screen`}>
       <div className="mx-auto max-w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center w-[20%]">
@@ -43,7 +50,7 @@ export default function Navbar({services}) {
               <Image src="data:image/webp;base64,..." alt="Logo" width={32} height={32} />
             </Link>
           </div>
-          <div className="hidden md:flex items-center space-x-8 w-[40%]">
+          <div className="hidden lg:flex items-center space-x-8 w-[40%]">
             <NavLink href="/">Home</NavLink>
             <NavLink href="/about-us">About</NavLink>
             <NavigationMenu>
@@ -63,16 +70,20 @@ export default function Navbar({services}) {
             <NavLink href="/showcase">Showcase</NavLink>
             <NavLink href="/reviews">Review</NavLink>
           </div>
-          <div className="hidden md:flex items-center space-x-6">
-            <a href="tel:(628)313-4168" className="flex gap-2 items-center text-gray-600">
+          <div className="hidden lg:flex items-center space-x-6">
+            <a href="tel:628313-4168" className="flex gap-2 items-center text-gray-600">
               <Image src="/flag.png" width={32} height={32} alt="Phone Flag" />
               <span>(628) 313-4168</span>
             </a>
-            <Button className="bg-gradient-to-r from-[#2db2b8] to-[#1064ab] text-white rounded-full transition-all duration-300 ease-in-out hover:from-[#1064ab] hover:to-[#2db2b8] hover:shadow-lg">
-              Get In Touch
-            </Button>
+            
+             {/* <DialogTrigger className="hidden lg:flex" asChild >
+                <button className="bg-gradient-to-r py-2 px-4  from-[#2db2b8] to-[#1064ab] text-white rounded-full transition-all duration-300 ease-in-out hover:from-[#1064ab] hover:to-[#2db2b8] hover:shadow-lg">
+                  Get In Touch
+                </button>
+           </DialogTrigger> */}
+             <ContactUsPopup/>
           </div>
-          <div className="md:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             <button
               onClick={toggleMobileMenu}
               className="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none"
@@ -84,7 +95,7 @@ export default function Navbar({services}) {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden max-w-full w-full overflow-hidden bg-white">
+        <div className="lg:hidden p-5 pb-0 max-w-full w-full overflow-hidden bg-white">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <MobileNavLink href="/">Home</MobileNavLink>
             <MobileNavLink href="/about">About</MobileNavLink>
@@ -97,7 +108,7 @@ export default function Navbar({services}) {
                 <ChevronDown className="ml-1 h-4 w-4 inline" />
               </button>
               {isServicesOpen && (
-                <div className="bg-gray-100 px-4 py-2">
+                <div className="  text-center rounded-sm m-auto px-4 py-2">
                   {Object.keys(services).map((service) => (
                     <MobileDropdownItem key={service} href={`/${service.replace(" ", "-")}`}>
                       {service}
@@ -109,18 +120,28 @@ export default function Navbar({services}) {
             <MobileNavLink href="/showcase">Showcase</MobileNavLink>
             <MobileNavLink href="/reviews">Reviews</MobileNavLink>
           </div>
-          <div className="pt-4 pb-3 border-t border-gray-200">
-            <div className="flex items-center px-5">
-              <Phone className="h-6 w-6 text-gray-400" />
-              <div className="ml-3 text-base font-medium text-gray-800">(628) 313-4168</div>
+          <div className="pt-4 pb-3 border-t border-gray-200 flex justify-center items-center flex-col gap-2">
+            <div className="flex w-full flex-col gap-y-4 items-center ">
+       
+              <a href="tel:628313-4168" className="flex gap-2 items-center text-gray-600">
+              <Image src="/flag.png" width={32} height={32} alt="Phone Flag" />
+              <span>(628) 313-4168</span>
+            </a>
+            <button onClick={()=>document.getElementById('footer')?.scrollIntoView({ behavior: "smooth"})} className="bg-gradient-to-r w-full  py-2 px-4  justify-center  from-[#2db2b8] to-[#1064ab] text-white rounded-full transition-all duration-300 ease-in-out hover:from-[#1064ab] hover:to-[#2db2b8] hover:shadow-lg">
+                  Get In Touch
+                </button>
             </div>
-            <div className="mt-3 px-2">
-              <Button className="w-full bg-gradient-to-r from-[#2db2b8] to-[#1064ab] text-white">Get In Touch</Button>
-            </div>
+          
+            {/* <DialogTrigger asChild >
+                <button className="bg-gradient-to-r  py-2 px-4 w-11/12 justify-center  from-[#2db2b8] to-[#1064ab] text-white rounded-full transition-all duration-300 ease-in-out hover:from-[#1064ab] hover:to-[#2db2b8] hover:shadow-lg">
+                  Get In Touch
+                </button>
+           </DialogTrigger> */}
           </div>
         </div>
       )}
     </nav>
+    </Dialog>
   );
 }
 
@@ -154,7 +175,7 @@ function MobileNavLink({ href, children }) {
 
 function MobileDropdownItem({ href, children }) {
   return (
-    <Link href={href} className="block py-2 text-sm text-gray-700 hover:text-gray-900">
+    <Link href={href} className="block py-2 text-sm border-b border-darkGray mb-2">
       {children}
     </Link>
   );

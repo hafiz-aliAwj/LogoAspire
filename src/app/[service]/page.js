@@ -1,8 +1,8 @@
 import React from 'react'
-import HeroSecondarySection from '../components/HeroSecondarySection'
+import HeroSecondarySection from '@/components/HeroSecondarySection'
 import { ServiceTypes } from './ServiceTypes'
 import { ServiceShowcaseSecton } from './ServiceShowcaseSecton'
-import { PackageSection } from '../components/PackageSection'
+import { PackageSection } from '@/components/PackageSection'
 
 const page = async({params}) => {
     const service=await params.service

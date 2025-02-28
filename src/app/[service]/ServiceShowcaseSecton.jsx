@@ -1,11 +1,13 @@
 'use client'
 import React, { useState } from 'react'
-import { HeadingSection } from '../components/ui/Heading'
-import { services } from '../components/ServiceSection'
+import { HeadingSection } from '@/components/ui/Heading'
+import { services } from '@/components/ServiceSection'
 import { ArrowLeft, ArrowRight, Plus } from 'lucide-react'
-import { Dialog, DialogContent } from "@/app/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Image from 'next/image'
-import { Button } from '../components/ui/button'
+import { Button } from '@/components/ui/button'
+import Fancybox from '@/components/ui/Fancybox'
+import Link from 'next/link'
 export const ServiceShowcaseSecton = ({service}) => {
     const serviceList = Object.keys(services);
     const [isOpen, setIsOpen] = useState(false);
@@ -26,22 +28,32 @@ export const ServiceShowcaseSecton = ({service}) => {
   return (
     <div>
         <HeadingSection headingTop={'Our Recent Projects'} headingMiddle={'Browse Our Portfolio To See Creative Grind.'} para={'We create a logo with an out of the box design sense combined with words that grab the interest of your target audience.'}/>
-        <div className="flex m-auto w-[320px] px-[15px] items-center md:max-w-[1300px] justify-center flex-wrap">
+        <Fancybox
+  options={{
+    Carousel: {
+      infinite: false,
+    },
+  }}
+>
+        <div className="flex m-auto w-[320px] px-[15px] items-center md:max-w-[1300px] md:w-full justify-center flex-wrap">
+  
+
         {services[service]?.map((service, index) => (
-          <div
-            onClick={() => openModal(index)}
+          <Link
+            data-fancybox="gallery" href={`https://www.logoaspire.com/assets/images/webp/portfolio/website/thumb-${index+1}.webp`}
             className="relative md:flex-[0_0_23.5%] md:mr-[15px] mb-[20px] overflow-hidden"
           >
-            <img
+            <Image
               src={`https://www.logoaspire.com/assets/images/webp/portfolio/website/thumb-${index+1}.webp`}
-              className="block w-full h-auto"
-            />
+              className="block w-full h-auto" width={150} height={200}
+              />
             <div className="absolute bottom-0 right-0 w-full h-full bg-[#c40e1487] opacity-0 transition-all duration-300 ease-in-out hover:opacity-100 hover:bottom-0 hover:right-0 flex items-center justify-center">
               <Plus className="text-white w-[50px] h-[50px]" strokeWidth={5} />
             </div>
-          </div>
+          </Link>
         ))}
       </div>
+              </Fancybox>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="max-w-7xl h-1/2  w-full bg-transparent border-none p-4">
           <div className="relative flex  justify-between">

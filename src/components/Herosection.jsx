@@ -4,10 +4,14 @@ import Image from 'next/image'
 import { Button } from './ui/button'
 
 export default function HeroSection() {
-  
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
 
 
   return (
+    <>
     <section className="pt-20 bg-[url('https://www.vectorlabz.com/assets/images/banner/banner-home.jpg')] bg-center bg-cover h-screen flex items-center">
     <div className="container mx-auto px-4 pt-16 flex flex-wrap items-center">
       <div className="w-full md:w-1/2 mb-8 md:mb-0 px-4">
@@ -37,5 +41,7 @@ export default function HeroSection() {
       </div>
     </div>
   </section>
+  
+  </>
   )
 }

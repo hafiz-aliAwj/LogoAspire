@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeadingSection } from '../components/ui/Heading'
+import { HeadingSection } from '@/components/ui/Heading'
 import { ReviwLongCard } from './ReviwLongCard'
 
 export const ReviewSection = () => {

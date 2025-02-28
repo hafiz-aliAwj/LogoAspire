@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Switch } from "@/app/components/ui/switch";
-import { Label } from "@/app/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 export const CategorySection = ({  showSubCategories,services,setActiveCategory,activeCategory,showToggleButton }) => {
   const [isIndustryWise, setIsIndustryWise] = useState(false); 
 
