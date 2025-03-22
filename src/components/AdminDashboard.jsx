@@ -6,9 +6,10 @@ import Image from "next/image";
 import { LayoutDashboard, User, Image as Img, BookOpen, Trophy, LogOut } from "lucide-react";
 // import AdminManagement from "@/components/AdminPanel";
 import PrivateRoute from "@/components/PrivateRoute";
-import { CategorySection } from "./ui/CategorySection";
 import { services } from "./ServiceSection";
 import SentEmails from "./SentEmails";
+import ContactManagement from "./Contacts";
+import ServicesList from "./Services";
 
 export default function AdminDashboard() {
   const [selectedImage, setSelectedImage] = useState([]);
@@ -28,18 +29,18 @@ const handleImageChange = (e, index) => {
 
   const sidebarItems = [
 
-    { icon: User, label: "Manage Mails", value: "contacts" },
-    { icon: Img, label: "Change Slider Images", value: "slider-images" },
-    { icon: BookOpen, label: "Manage Content", value: "manage-content" },
+    { icon: User, label: "Contacts", value: "contacts" },
+    { icon: BookOpen, label: "Services", value: "services" },
+    { icon: Img, label: "Manage Content", value: "manage-content" },
     // { icon: BookOpen, label: "Manage Content", value: "manage-content" },
  
   ];
 
   return (
     <PrivateRoute>
-      <div className="flex h-screen bg-slate-100 pt-20">
+      <div className="flex  bg-slate-100 pt-20">
         {/* Sidebar */}
-        <aside className="w-64 bg-gray-900 text-black p-6 flex flex-col">
+        <aside className="w-64 bg-gray-900 text-black p-6 flex h-[70vh] flex-col">
           <div className="flex items-center space-x-3 mb-8">
             <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center">
               <User/>
@@ -55,7 +56,7 @@ const handleImageChange = (e, index) => {
                 <button
                   onClick={() => setActiveTab(item.value)}
                   className={`flex items-center w-full p-3 rounded-lg hover:bg-gray-700 transition ${
-                    activeTab === item.value ? "bg-gray-700" : ""
+                    activeTab === item.value ? "bg-gray-700" : "bg-gray-100"
                   }`}
                 >
                   <item.icon className="h-5 w-5 mr-3" />
@@ -76,6 +77,7 @@ const handleImageChange = (e, index) => {
           <div className="bg-white shadow-md p-6 rounded-lg">
            
 
+<<<<<<< HEAD
           {/* {activeTab === "admin-management" && <AdminManagement />} */}
           {activeTab === "contacts" &&  <SentEmails/>}
 
@@ -143,6 +145,10 @@ const handleImageChange = (e, index) => {
               </div>
             )}
 
+=======
+          {activeTab === "contacts" &&  <ContactManagement/>}
+          {activeTab === "services" && <ServicesList />}
+>>>>>>> 58f8cd9e8f0a1da12eb988592bf11d5df52c270a
           
           </div>
         </main>

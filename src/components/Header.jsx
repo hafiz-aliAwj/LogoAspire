@@ -40,14 +40,21 @@ export default function Navbar({services}) {
   }, []);
 
   return (
+<<<<<<< HEAD
     <>
      
     <nav className={`fixed  border-b z-[999] border-[#ddd7db] top-0 left-0 right-0 bg-white  transition-shadow duration-300 ${hasScrolled ? 'shadow-[0px_2px_20px_1px_#e0e0e0]' : ''}    w-screen`}>
       <div className="mx-auto max-w-full px-4 sm:px-6 lg:px-8">
+=======
+    <Dialog>
+      <ContactUsModal/>
+    <nav className={`fixed  border-b z-[999] border-[#ddd7db] top-0 left-0 right-0 bg-white  transition-shadow duration-300 ${hasScrolled ? 'shadow-[0px_2px_20px_1px_#e0e0e0]' : ''}   lg:w-[1356px] w-screen`}>
+      <div className="mx-auto py-2 max-w-full px-4 sm:px-6 lg:px-8">
+>>>>>>> 58f8cd9e8f0a1da12eb988592bf11d5df52c270a
         <div className="flex justify-between h-20">
           <div className="flex items-center w-[20%]">
             <Link href="/" className="flex-shrink-0">
-              <Image src="data:image/webp;base64,..." alt="Logo" width={32} height={32} />
+              <Image src="/images/logo.gif" alt="Logo" width={180} height={32} />
             </Link>
           </div>
           <div className="hidden lg:flex items-center space-x-8 w-[40%]">
@@ -148,7 +155,7 @@ export default function Navbar({services}) {
 
 function NavLink({ href, children }) {
   return (
-    <Link href={href} className="px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-700">
+    <Link href={href} className="px-1 pt-1 text-lg font-medium text-gray-500 hover:text-gray-700">
       {children}
     </Link>
   );
