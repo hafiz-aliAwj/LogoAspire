@@ -155,10 +155,10 @@ console.log(servicesList)
 
   return (
     <section className="py-16 bg-gray-50 relative">
-      <div class="element element-6 hidden md:block"><img src="https://www.logoaspire.com/assets/images/webp/elements/element-5.webp"/></div>
-      <div class="element element-3 hidden md:block"><img src="https://www.logoaspire.com/assets/images/webp/elements/element-3.webp"/></div>
-      <div class="element element-5 hidden md:block"><img src="https://www.logoaspire.com/assets/images/webp/elements/element-4.webp"/></div>
-      <div class="element element-4 hidden md:block"><img src="https://www.logoaspire.com/assets/images/webp/elements/element-4.webp"/></div>
+      <div className="element element-6 hidden md:block"><img src="https://www.logoaspire.com/assets/images/webp/elements/element-5.webp"/></div>
+      <div className="element element-3 hidden md:block"><img src="https://www.logoaspire.com/assets/images/webp/elements/element-3.webp"/></div>
+      <div className="element element-5 hidden md:block"><img src="https://www.logoaspire.com/assets/images/webp/elements/element-4.webp"/></div>
+      <div className="element element-4 hidden md:block"><img src="https://www.logoaspire.com/assets/images/webp/elements/element-4.webp"/></div>
 
       <div className="container mx-auto max-w-[1170px] px-4">
         <HeadingSection

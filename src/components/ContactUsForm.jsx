@@ -25,7 +25,7 @@ const countries = [
 ];
 export const ContactUsForm = () => {
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
   const [loading, setLoading] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
   const handleSelectCountry = (country) => {
@@ -37,21 +37,25 @@ export const ContactUsForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevents default form submission
+
     setLoading(true);
     setResponseMessage("");
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/contact/enter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, phone: selectedCountry.code + formData.phone }),
+        body: JSON.stringify({
+          ...formData,
+          phone: selectedCountry.code + formData.phone,
+        }),
       });
 
       const data = await res.json();
       if (res.ok) {
-        setResponseMessage("✅ Email sent successfully!");
-        setFormData({ name: "", email: "", phone: "", message: "" }); // Reset form
+        setResponseMessage("✅ Your Details have been Recorded!");
+        setFormData({ name: "", email: "", phone: "" }); // Reset form
       } else {
         setResponseMessage(`❌ Error: ${data.error}`);
       }
@@ -63,7 +67,6 @@ export const ContactUsForm = () => {
   };
 
   return (
-    
     <div className="form-wrap md:-right-16">
       <span className="form-child-wrap hidden md:flex"></span>
       <div className="md:container max-w-full md:text-start text-center   flex relative md:flex-row flex-col">
@@ -73,7 +76,9 @@ export const ContactUsForm = () => {
               <p>Let creativity take over</p>
             </div>
             <div class="md:hidden   block bg-white p-[20px] mb-[20px]">
-              <p className="text-[16px] font-bold text-gray  md:text-start text-center">Let creativity take over</p>
+              <p className="text-[16px] font-bold text-gray  md:text-start text-center">
+                Let creativity take over
+              </p>
             </div>
             <h2 className="text-[18px]  font-semibold mb-[10px] md:text-start text-center md:mb-[30px] text-[#ffffff7d]">
               Ask us anything, we have the friendliest customer service folks
@@ -87,7 +92,10 @@ export const ContactUsForm = () => {
             <a className="mb-2 text-[16px] md:text-2xl font-semibold text-white no-underline">
               info@logoaspire.com
             </a>
-            <Button variant='outline' className="font-semibold mt-2 px-6 py-3 bg-white rounded w-full  md:w-3/5 text-[#333333] ">
+            <Button
+              variant="outline"
+              className="font-semibold mt-2 px-6 py-3 bg-white rounded w-full  md:w-3/5 text-[#333333] "
+            >
               <strong className="text-secondaryColor">Chat now</strong>
               to avail this offer
             </Button>
@@ -102,12 +110,16 @@ export const ContactUsForm = () => {
           </h3>
           <form className="flex flex-col" onSubmit={handleSubmit}>
             <input
-            name="name" value={formData.name} onChange={handleChange}
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
               placeholder="Enter Your Name"
               className="h-[54px] rounded-[50px] pl-[20px] pr-[8px] py-[12px] text-[15px] text-black mb-[25px] border border-gray-300 "
             />
             <input
-            name="email" value={formData.email} onChange={handleChange}
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="Enter Your Email"
               type="email"
               className="h-[54px] rounded-[50px] pr-[8px] py-[12px] pl-[20px] text-[15px] text-black mb-[25px] border border-gray-300 "
@@ -152,21 +164,29 @@ export const ContactUsForm = () => {
 
               {/* Input Field */}
               <input
-              name="phone" 
-              value={formData.phone} 
-              onChange={handleChange}
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
                 type="text"
                 placeholder="Phone Number"
                 className="w-full border border-gray-300 rounded-full outline-none text-sm text-gray-700 placeholder-gray-400 pl-[20px] pr-[8px] py-[12px]"
                 style={{ paddingLeft: "90px" }} // Additional padding for flag & code
               />
             </div>
-            <span className="my-[20px] text-[10px] ml-3">By clicking "Submit," you confirm that you agree to Logo Aspire Privacy Policy.</span>
-            <button  className="custom-btn w-[200px]">
-         {loading ? "Sending..." : <>   <span className="moving-circle"></span>
-          <span className="text-[12px]">Send Now</span></>}
-          </button>
-          {responseMessage && <p className="mt-2 ">{responseMessage}</p>}
+            <span className="my-[20px] text-[10px] ml-3">
+              By clicking "Submit," you confirm that you agree to Logo Aspire
+              Privacy Policy.
+            </span>
+            <button className="custom-btn w-[200px]" type="button" onClick={handleSubmit}>
+              {loading ? "Sending..." : (
+                <>
+                  <span className="moving-circle"></span>
+                  <span className="text-[12px]">Send Now</span>
+                </>
+              )}
+            </button>
+
+            {responseMessage && <p className="mt-2 ">{responseMessage}</p>}
           </form>
         </div>
       </div>

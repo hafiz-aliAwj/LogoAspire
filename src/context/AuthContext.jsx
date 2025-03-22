@@ -8,22 +8,24 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const contactRef=useRef()
+  
   useEffect(() => {
-    const token = Cookies.get("auth_token"); 
-    console.log(token)// Read cookie
-    if(!token) return
-
-    setIsAuthenticated(true);
+    const token = Cookies.get("auth_token"); // Use js-cookie to read cookies safely
+    console.log("Token:", token);
+    
+    if (token) {
+      setIsAuthenticated(true);
+    }
   }, []);
   useEffect(()=>{
     console.log(isAuthenticated)
   },[isAuthenticated])
   const login = async (email, password) => {
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch("/api/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username: email, password }),
       });
 
       if (response.ok) {
