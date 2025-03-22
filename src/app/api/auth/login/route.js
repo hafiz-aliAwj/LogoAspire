@@ -9,7 +9,7 @@ export async function POST(req) {
     const { email, password } = await req.json();
 
     // Mock authentication (Replace this with database validation)
-    if (email !== "sabeebr97@gmail.com" || password !== "a") {
+    if (email !== process.env.AUTH_EMAIL|| password !== process.env.PASSWORD) {
       return NextResponse.json(
         { message: "Invalid credentials" },
         { status: 401 }

@@ -72,7 +72,7 @@ const handleImageChange = (e, index) => {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-6">
+        <main className="flex-1  p-6">
           <div className="bg-white shadow-md p-6 rounded-lg">
            
 
@@ -97,7 +97,7 @@ const handleImageChange = (e, index) => {
                       alt={`Preview ${index}`}
                       width={300}
                       height={200}
-                      className="w-full h-40 object-cover rounded-lg"
+                      className="w-full h-full object-contain rounded-lg"
                     />
                   ) : (
                     <span className="text-gray-400">No image selected</span>

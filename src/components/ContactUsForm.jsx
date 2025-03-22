@@ -64,9 +64,9 @@ export const ContactUsForm = () => {
 
   return (
     
-    <div className="form-wrap md:-right-16">
+    <div id='contact' className="form-wrap md:-right-16">
       <span className="form-child-wrap hidden md:flex"></span>
-      <div className="md:container max-w-full md:text-start text-center   flex relative md:flex-row flex-col">
+      <div className="md:container md:max-w-[100vw] md:text-start text-center   flex relative md:flex-row flex-col">
         <div className="px-[15px] md:w-[42%] w-full flex-[0_0_42%] relative">
           <div className="bg-gradient-to-r from-[#111111] to-[#0b0b0b] flex flex-col justify-center w-full   h-auto md:h-[410px] mt-3 px-[20px] py-[25px] md:p-[85px_60px_60px_40px]">
             <div class="md:block quote hidden ">

@@ -22,7 +22,6 @@ export default function Home() {
       <PackageSection />
       <ContactusSection />
       <ContactUsForm/>
-      <SentEmails/>
     </div>
   );
 }
