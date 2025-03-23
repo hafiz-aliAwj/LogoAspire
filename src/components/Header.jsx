@@ -18,10 +18,12 @@ import {
 
 
 import {  ContactUsPopup } from "./ContactUsCard";
+import { AuthContext } from "@/context/AuthContext";
 
 
-
-export default function Navbar({services}) {
+export default function Navbar() {
+  const {services} = useContext(AuthContext)
+  console.log(services)
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -40,17 +42,10 @@ export default function Navbar({services}) {
   }, []);
 
   return (
-<<<<<<< HEAD
     <>
      
     <nav className={`fixed  border-b z-[999] border-[#ddd7db] top-0 left-0 right-0 bg-white  transition-shadow duration-300 ${hasScrolled ? 'shadow-[0px_2px_20px_1px_#e0e0e0]' : ''}    w-screen`}>
       <div className="mx-auto max-w-full px-4 sm:px-6 lg:px-8">
-=======
-    <Dialog>
-      <ContactUsModal/>
-    <nav className={`fixed  border-b z-[999] border-[#ddd7db] top-0 left-0 right-0 bg-white  transition-shadow duration-300 ${hasScrolled ? 'shadow-[0px_2px_20px_1px_#e0e0e0]' : ''}   lg:w-[1356px] w-screen`}>
-      <div className="mx-auto py-2 max-w-full px-4 sm:px-6 lg:px-8">
->>>>>>> 58f8cd9e8f0a1da12eb988592bf11d5df52c270a
         <div className="flex justify-between h-20">
           <div className="flex items-center w-[20%]">
             <Link href="/" className="flex-shrink-0">
@@ -63,11 +58,11 @@ export default function Navbar({services}) {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="text-lg">Services</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    {Object.keys(services).map((service) => (
-                      <Link href={`/${service.replace(" ", "-")}`} key={service}>
-                        <ListItem title={service} />
+                   {services.length > 0 && services.map((service) => (
+                      <Link href={`/${service.name.replace(" ", "-")}`} key={service._id}>
+                        <ListItem title={service.name} />
                       </Link>
                     ))}
                   </NavigationMenuContent>
@@ -114,11 +109,11 @@ export default function Navbar({services}) {
                 Services
                 <ChevronDown className="ml-1 h-4 w-4 inline" />
               </button>
-              {isServicesOpen && (
+              {isServicesOpen && services.length > 0 && (
                 <div className="  text-center rounded-sm m-auto px-4 py-2">
-                  {Object.keys(services).map((service) => (
-                    <MobileDropdownItem key={service} href={`/${service.replace(" ", "-")}`}>
-                      {service}
+                  {services.map((service) => (
+                    <MobileDropdownItem key={service._id} href={`/${service.name.replace(" ", "-")}`}>
+                      {service.name}
                     </MobileDropdownItem>
                   ))}
                 </div>

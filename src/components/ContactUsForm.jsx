@@ -67,12 +67,8 @@ export const ContactUsForm = () => {
   };
 
   return (
-<<<<<<< HEAD
     
     <div id='contact' className="form-wrap md:-right-16">
-=======
-    <div className="form-wrap md:-right-16">
->>>>>>> 58f8cd9e8f0a1da12eb988592bf11d5df52c270a
       <span className="form-child-wrap hidden md:flex"></span>
       <div className="md:container md:max-w-[100vw] md:text-start text-center   flex relative md:flex-row flex-col">
         <div className="px-[15px] md:w-[42%] w-full flex-[0_0_42%] relative">
