@@ -37,10 +37,10 @@ export default function HeroSecondarySection({
         {/* Text Section */}
         <div className="w-full mb-8 md:mb-0 px-4 text-center md:text-left md:w-1/2">
           <h2 className="text-[16px] text-gray-600 m-0">{headingTop}</h2>
-          <h1 className="text-[30px] leading-[40px] md:text-[54px] md:leading-[70px] bg-gradient-to-r from-[#34D2FC] to-[#1064ab] font-extrabold mb-4 bg-clip-text text-transparent">
+          <h1 className="text-[30px] leading-[40px] md:text-[50px] md:leading-[60px] bg-gradient-to-r from-[#34D2FC] to-[#1064ab] font-extrabold mb-4 bg-clip-text text-transparent">
             {headingMiddle}
           </h1>
-          <p className="text-[#1d1a42] mb-8 text-[16px] md:text-[18px]">{para}</p>
+          <p className="text-[#1d1a42] mb-8 text-[16px] md:text-[16px]">{para}</p>
           <div className="md:flex-row gap-2 flex-col flex  items-center">
           {children}
           <a

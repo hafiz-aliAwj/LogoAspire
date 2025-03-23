@@ -20,12 +20,7 @@ export default function Home() {
       <ShowcaseSection />
       <PackageSection />
       <ContactusSection />
-      <ContactUsForm />
-      
-      {/* Wrap SentEmails in Suspense to handle loading
-      <Suspense fallback={<div>Loading Sent Emails...</div>}>
-        <SentEmails />
-      </Suspense> */} 
+      <ContactUsForm/>
     </div>
   );
 }

@@ -13,12 +13,12 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "./ui/navigation-menu";
-import { DialogTrigger,Dialog } from "./ui/dialog";
 
-import { ContactUsModal, ContactUsPopup } from "./ContactUsCard";
-import { AuthContext } from "@/context/AuthContext";
+} from "./ui/navigation-menu";
+
+
+import {  ContactUsPopup } from "./ContactUsCard";
+
 
 
 export default function Navbar({services}) {
@@ -40,10 +40,17 @@ export default function Navbar({services}) {
   }, []);
 
   return (
+<<<<<<< HEAD
+    <>
+     
+    <nav className={`fixed  border-b z-[999] border-[#ddd7db] top-0 left-0 right-0 bg-white  transition-shadow duration-300 ${hasScrolled ? 'shadow-[0px_2px_20px_1px_#e0e0e0]' : ''}    w-screen`}>
+      <div className="mx-auto max-w-full px-4 sm:px-6 lg:px-8">
+=======
     <Dialog>
       <ContactUsModal/>
     <nav className={`fixed  border-b z-[999] border-[#ddd7db] top-0 left-0 right-0 bg-white  transition-shadow duration-300 ${hasScrolled ? 'shadow-[0px_2px_20px_1px_#e0e0e0]' : ''}   lg:w-[1356px] w-screen`}>
       <div className="mx-auto py-2 max-w-full px-4 sm:px-6 lg:px-8">
+>>>>>>> 58f8cd9e8f0a1da12eb988592bf11d5df52c270a
         <div className="flex justify-between h-20">
           <div className="flex items-center w-[20%]">
             <Link href="/" className="flex-shrink-0">
@@ -127,7 +134,7 @@ export default function Navbar({services}) {
               <Image src="/flag.png" width={32} height={32} alt="Phone Flag" />
               <span>(628) 313-4168</span>
             </a>
-            <button onClick={()=>document.getElementById('footer')?.scrollIntoView({ behavior: "smooth"})} className="bg-gradient-to-r w-full  py-2 px-4  justify-center  from-[#2db2b8] to-[#1064ab] text-white rounded-full transition-all duration-300 ease-in-out hover:from-[#1064ab] hover:to-[#2db2b8] hover:shadow-lg">
+            <button onClick={()=>document.getElementById('contact')?.scrollIntoView({ behavior: "smooth"})} className="bg-gradient-to-r w-full  py-2 px-4  justify-center  from-[#2db2b8] to-[#1064ab] text-white rounded-full transition-all duration-300 ease-in-out hover:from-[#1064ab] hover:to-[#2db2b8] hover:shadow-lg">
                   Get In Touch
                 </button>
             </div>
@@ -141,7 +148,8 @@ export default function Navbar({services}) {
         </div>
       )}
     </nav>
-    </Dialog>
+    </>
+    
   );
 }
 

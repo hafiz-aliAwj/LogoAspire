@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export const ContactusSection = () => {
   return (
-    <div className="border-t flex flex-col max-w-[1300px]  items-center border-[#cccccc] pt-[167px] pb-[77px]">
+    <div className="border-t flex flex-col max-w-[100vw]  items-center border-[#cccccc] pt-[167px] pb-[77px]">
       <HeadingSection
         headingTop={"READY"}
         headingMiddle={"TO WORK WITH US?"}

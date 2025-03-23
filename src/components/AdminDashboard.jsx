@@ -74,13 +74,14 @@ const handleImageChange = (e, index) => {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-6">
+        <main className="flex-1  p-6">
           <div className="bg-white shadow-md p-6 rounded-lg">
-           
 
           {activeTab === "contacts" &&  <ContactManagement/>}
           {activeTab === "services" && <ServicesList />}
+
           {activeTab === "manage-content" && <ImageManagement />}
+
           
           </div>
         </main>

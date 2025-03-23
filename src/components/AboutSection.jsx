@@ -3,7 +3,7 @@ import React from 'react'
 
 export const AboutSection = () => {
   return (
-    <div className='flex container items-center px-[15px] max-w-[1356px] bg-center bg-cover bg-no-repeat justify-between bg-[url("https://www.logoaspire.com/assets/images/bg/bg-cta.jpg")]'>
+    <div className='flex container max-w-[100vw] items-center px-[15px]  bg-center bg-cover bg-no-repeat justify-center gap-x-5 bg-[url("https://www.logoaspire.com/assets/images/bg/bg-cta.jpg")]'>
         <div className='mx-[15px] hidden md:block'>
           <Image src={'https://www.logoaspire.com/assets/images/webp/icon.webp'} width={570} height={502} className='transition-opacity duration-[500ms] w-[570px] relative left-0 top-0 z-[998] scale-125'/>
         </div>

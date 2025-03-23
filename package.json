@@ -49,7 +49,12 @@
     "react-hot-toast": "^2.5.2",
     "react-icons": "^5.5.0",
     "react-responsive-modal": "^6.4.2",
+<<<<<<< HEAD
+    "react-slick": "^0.30.3",
+    "slick-carousel": "^1.8.1",
+=======
     "react-table": "^7.8.0",
+>>>>>>> 58f8cd9e8f0a1da12eb988592bf11d5df52c270a
     "tailwind-merge": "^2.5.4",
     "tailwind-scrollbar": "^3.1.0",
     "tailwindcss-animate": "^1.0.7"

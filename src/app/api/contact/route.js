@@ -27,7 +27,7 @@ export async function POST(req) {
     let mailOptions = {
       from: email, // User's email (sender)
       to: process.env.RECEIVER_EMAIL, // Fixed receiver email
-      subject: `New Contact Us Form Submission from ${name}`,
+      subject: `New Contact Us Form Submission from ${email}`,
       html: `
         <h3>Contact Details</h3>
         <p><strong>Name:</strong> ${name}</p>

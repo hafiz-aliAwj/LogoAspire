@@ -12,9 +12,9 @@ export default function HeroSection() {
 
   return (
     <>
-    <section className="pt-20 bg-[url('https://www.vectorlabz.com/assets/images/banner/banner-home.jpg')] bg-center bg-cover h-screen flex items-center">
-    <div className="container mx-auto px-4 pt-16 flex flex-wrap items-center">
-      <div className="w-full md:w-1/2 mb-8 md:mb-0 px-4">
+    <section className="pt-20 bg-[url('https://www.vectorlabz.com/assets/images/banner/banner-home.jpg')] bg-center bg-cover h-screen">
+    <div className="max-w-[100vw] mx-auto pl-8 pt-16 flex flex-wrap items-center">
+      <div className="w-full md:relative md:4 md:w-1/2 mb-8 md:mb-0 px-4">
         <h2 className="font-semibold text-xl md:text-2xl text-[#333333] m-0">
           PROFICIENT DESIGN AGENCY.
         </h2>
