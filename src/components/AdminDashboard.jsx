@@ -10,6 +10,7 @@ import { services } from "./ServiceSection";
 import SentEmails from "./SentEmails";
 import ContactManagement from "./Contacts";
 import ServicesList from "./Services";
+import ImageManagement from "./Images";
 
 export default function AdminDashboard() {
   const [selectedImage, setSelectedImage] = useState([]);
@@ -79,6 +80,7 @@ const handleImageChange = (e, index) => {
 
           {activeTab === "contacts" &&  <ContactManagement/>}
           {activeTab === "services" && <ServicesList />}
+          {activeTab === "manage-content" && <ImageManagement />}
           
           </div>
         </main>
