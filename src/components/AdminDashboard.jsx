@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { LayoutDashboard, User, Image as Img, BookOpen, Trophy, LogOut } from "lucide-react";
@@ -11,10 +11,23 @@ import SentEmails from "./SentEmails";
 import ContactManagement from "./Contacts";
 import ServicesList from "./Services";
 import ImageManagement from "./Images";
+import ServiceTabs from "./service-tabs";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function AdminDashboard() {
+  const { isAuthenticated } = useContext(AuthContext);
   const [selectedImage, setSelectedImage] = useState([]);
   const [activeCategory, setActiveCategory] = useState([]);
+
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push("/admin-panel/login");
+    }
+  }
+  , [isAuthenticated]);
 
 const handleImageChange = (e, index) => {
   const newImage = e.target.files[0];
@@ -78,7 +91,7 @@ const handleImageChange = (e, index) => {
           <div className="bg-white shadow-md p-6 rounded-lg">
 
           {activeTab === "contacts" &&  <ContactManagement/>}
-          {activeTab === "services" && <ServicesList />}
+          {activeTab === "services" && <ServiceTabs />}
 
           {activeTab === "manage-content" && <ImageManagement />}
 

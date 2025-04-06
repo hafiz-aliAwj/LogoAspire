@@ -1,115 +1,109 @@
-import { NextResponse } from "next/server";
-import { connectDB } from "../lib/database";
-import Image from "../lib/Models/Image";
-import { GridFSBucket, MongoClient } from "mongodb";
-import { Readable } from "stream";
+import { NextResponse } from "next/server"
+import { GridFSBucket, MongoClient } from "mongodb"
+import { Readable } from "stream"
+import { connectDB } from "../lib/database"
+import Image from "../lib/Models/Image"
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI
 
 export async function POST(req) {
   try {
-    await connectDB();
-
-    // Parse the multipart form data
-    const formData = await req.formData();
-
-    // Get the file from the form data
-    const file = formData.get("image");
+    await connectDB()
+    const formData = await req.formData()
+    const file = formData.get("image")
     if (!file) {
-      return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
+      return new Response(JSON.stringify({ error: "No file uploaded" }), { status: 400 })
     }
 
-    // Get other form fields
-    const category = formData.get("category");
-    const atHome = formData.get("atHome") === "true";
-    const orderAtHome = formData.get("orderAtHome");
-    const orderAtPage = formData.get("orderAtPage");
+    const serviceId = formData.get("serviceId")
+    const subServiceIds = formData.getAll("subServiceId")
+    const atHome = formData.get("atHome") === "true"
 
-    // Connect to MongoDB directly for GridFS operations
-    const client = new MongoClient(MONGODB_URI);
-    await client.connect();
-    const db = client.db();
-    const bucket = new GridFSBucket(db, { bucketName: "uploads" });
+    if (!serviceId) {
+      return new Response(JSON.stringify({ error: "Service ID is required" }), { status: 400 })
+    }
 
-    // Convert file to buffer and then to stream
-    const buffer = Buffer.from(await file.arrayBuffer());
-    const stream = Readable.from(buffer);
+    if (!subServiceIds || subServiceIds.length === 0) {
+      return new Response(JSON.stringify({ error: "At least one subservice is required" }), { status: 400 })
+    }
 
-    // Create a unique filename
-    const filename = `${Date.now()}-${file.name}`;
+    const client = new MongoClient(MONGODB_URI)
+    await client.connect()
+    const db = client.db()
+    const bucket = new GridFSBucket(db, { bucketName: "uploads" })
 
-    // Upload to GridFS
-    const uploadStream = bucket.openUploadStream(filename);
+    const buffer = Buffer.from(await file.arrayBuffer())
+    const stream = Readable.from(buffer)
+
+    const filename = `${Date.now()}-${file.name}`
+
+    const uploadStream = bucket.openUploadStream(filename)
 
     // Wait for the upload to complete
     await new Promise((resolve, reject) => {
-      stream.pipe(uploadStream).on("error", reject).on("finish", resolve);
-    });
+      stream.pipe(uploadStream).on("error", reject).on("finish", resolve)
+    })
 
     // Save metadata in the Image collection
     const newImage = new Image({
       filename: filename,
-      category,
+      serviceId,
+      subServiceId: subServiceIds,
       atHome,
-      orderAtHome: parseInt(orderAtHome) || 30, // Default to 30
-      orderAtPage: parseInt(orderAtPage) || 30, // Default to 30
-    });
+      orderAtHome: atHome ? 30 : -1, // Default to 30 if shown on home
+      orderAtPage: 30, // Default to 30
+    })
 
-    await newImage.save();
+    await newImage.save()
+    await client.close()
 
-    // Close the MongoDB connection
-    await client.close();
-
-    return NextResponse.json(
-      {
+    return new Response(
+      JSON.stringify({
         message: "Image uploaded successfully!",
         image: {
-          id: newImage._id,
+          _id: newImage._id,
           filename: newImage.filename,
-          category: newImage.category,
+          serviceId: newImage.serviceId,
+          subServiceId: newImage.subServiceId,
           atHome: newImage.atHome,
           orderAtHome: newImage.orderAtHome,
           orderAtPage: newImage.orderAtPage,
         },
-      },
-      { status: 201 }
-    );
+      }),
+      { status: 201 },
+    )
   } catch (error) {
-    console.error("Upload error:", error);
-    return NextResponse.json(
-      { error: error.message || "Failed to upload image" },
-      { status: 500 }
-    );
+    console.error("Upload error:", error)
+    return new Response(JSON.stringify({ error: error.message || "Failed to upload image" }), { status: 500 })
   }
 }
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
 
 export async function GET(req) {
   try {
-    await connectDB();
+    await connectDB()
 
-    // Extract category from query params
-    const { searchParams } = new URL(req.url);
-    const category = searchParams.get("category");
+    const { searchParams } = new URL(req.url)
+    const serviceId = searchParams.get("serviceId")
+    const subServiceId = searchParams.get("subServiceId")
 
-    if (!category) {
-      return new Response(JSON.stringify({ error: "Category is required" }), { status: 400 });
+    if (!serviceId) {
+      return new Response(JSON.stringify({ error: "Service ID is required" }), { status: 400 })
     }
 
-    // Fetch images based on category
-    const images = await Image.find({ category });
+    // Build query
+    const query = { serviceId }
 
-    return new Response(JSON.stringify(images), { status: 200 });
+    // If subServiceId is provided, filter by it
+    if (subServiceId) {
+      query.subServiceId = subServiceId
+    }
+
+    const images = await Image.find(query)
+
+    return new Response(JSON.stringify(images), { status: 200 })
   } catch (error) {
-    console.error("Fetch error:", error);
-    return new Response(
-      JSON.stringify({ error: error.message || "Failed to fetch images" }),
-      { status: 500 }
-    );
+    console.error("Fetch error:", error)
+    return new Response(JSON.stringify({ error: error.message || "Failed to fetch images" }), { status: 500 })
   }
 }
+

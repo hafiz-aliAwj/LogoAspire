@@ -1,6 +1,7 @@
 "use client";
 
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 import { createContext, useEffect, useRef, useState } from "react";
 
 export const AuthContext = createContext();
@@ -11,10 +12,12 @@ export const AuthProvider = ({ children }) => {
   const [images, setImages] = useState([]);
   const [sName, setSName] = useState("");
   const contactRef=useRef()
+
+  const router = useRouter()
  const fetchServices = async ()=>{
     const response = await fetch(`/api/service`)
     const data = await response.json();
-    console.log(data)
+    console.log(2, data)
     setServices(data.data);
 }
 
@@ -23,6 +26,24 @@ const fetchImages = async (sName)=>{
   const data = await response.json();
   setImages(data);
 }
+
+
+const checkAuthentication = async() =>{
+  const response = await fetch("/api/admin/authenticate").then((rs) => rs.json())
+
+  if (response.authenticate) {
+    setIsAuthenticated(true)
+  } else {
+    setIsAuthenticated(false)
+  }
+}
+
+useEffect(()=>{
+   checkAuthentication()
+},[])
+useEffect(()=>{
+  console.log("isAuthenticated", isAuthenticated)
+},[isAuthenticated])
   useEffect(()=>{
     fetchServices()
   },[])
@@ -32,17 +53,7 @@ const fetchImages = async (sName)=>{
 fetchImages(sName.length > 0 ? sName : services[0].name)
    
   }, [sName, services]);
-  useEffect(() => {
-    const token = Cookies.get("auth_token"); // Use js-cookie to read cookies safely
-    console.log("Token:", token);
-    
-    if (token) {
-      setIsAuthenticated(true);
-    }
-  }, []);
-  useEffect(()=>{
-    console.log(isAuthenticated)
-  },[isAuthenticated])
+
   const login = async (email, password) => {
     try {
       const response = await fetch("/api/admin/login", {
@@ -53,7 +64,7 @@ fetchImages(sName.length > 0 ? sName : services[0].name)
 
       if (response.ok) {
         setIsAuthenticated(true);
-        
+        router.push("/admin-panel");
         return true;
       } else {
         setIsAuthenticated(false);

@@ -16,6 +16,8 @@ export async function GET() {
 export async function POST(req) {
     try {
         const body = await req.json();
+        delete body._id
+        console.log(body)
         await connectDB();
 
         const newService = new Service(body);

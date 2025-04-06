@@ -12,15 +12,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <AuthProvider>
-      {children}
-      <html lang="en" className="overflow-auto">
-        <body className={` antialiased`}>
-          <Navbar services={services} />
+    <html lang="en" className="overflow-auto">
+      <body className={` antialiased`}>
+        <AuthProvider>
+          <Navbar />
 
+          {children}
           <Footer services={services} />
-        </body>
-      </html>
-    </AuthProvider>
+        </AuthProvider>
+      </body>
+    </html>
   );
 }

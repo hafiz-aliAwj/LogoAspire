@@ -1,11 +1,10 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Mail, Lock, AlertTriangle } from "lucide-react";
 import { AuthContext } from "@/context/AuthContext"; // Ensure this path is correct
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-import PrivateRoute from "./PrivateRoute";
 
 
 export default function AdminLogin() {
@@ -14,8 +13,14 @@ export default function AdminLogin() {
   const [password, setPassword] = useState("");
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
-  const { login } = useContext(AuthContext);
+  const { login , isAuthenticated } = useContext(AuthContext);
   const router = useRouter();
+useEffect(()=>{
+  console.log("isAuthenticated", isAuthenticated)
+  if(isAuthenticated){
+    router.push('/admin-panel')
+  }
+},[isAuthenticated])
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -38,7 +43,7 @@ export default function AdminLogin() {
   };
   
   return (
-    <PrivateRoute children={ 
+     
     <div className="flex items-center pt-20 justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6">
         {/* Tabs */}
@@ -140,7 +145,7 @@ export default function AdminLogin() {
           </form>
         )}
       </div>
-    </div>}/>
+    </div>
    
   );
 }

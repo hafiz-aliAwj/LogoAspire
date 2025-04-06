@@ -5,7 +5,7 @@ import { CategorySection } from "./ui/CategorySection";
 import { services } from "./ServiceSection";
 
 import { Plus} from 'lucide-react'
-zz
+  
 
 import Image from "next/image";
 import Fancybox from "./ui/Fancybox";

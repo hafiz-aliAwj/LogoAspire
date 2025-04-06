@@ -5,6 +5,7 @@ export async function GET() {
     try {
         await connectDB();
         const contacts = await Contact.find();
+        console.log(contacts)
         const result = Object.groupBy(contacts, ({contacted})=>{
             return contacted
         });

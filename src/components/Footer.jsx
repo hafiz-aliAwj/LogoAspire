@@ -40,7 +40,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {["Home", "About Us", "showcase", "reviews"].map((item) => (
                 <li key={item} className="flex gap-1 items-center ">
-                <svg stroke="#0e1863" fill="#0e1863" stroke-width="0"  viewBox="0 0 192 512" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"></path></svg>
+                <svg stroke="#0e1863" fill="#0e1863" strokeWidth="0"  viewBox="0 0 192 512" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"></path></svg>
 
                   <Link href={`/${item}`} className="text-gray-400 hover:text-darkGray text-sm">
                     {item}
@@ -56,7 +56,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {Object.keys(services).map((item) => (
                 <li key={item} className="flex gap-1 items-center ">
-                <svg stroke="#0e1863" fill="#0e1863" stroke-width="0"  viewBox="0 0 192 512" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"></path></svg>
+                <svg stroke="#0e1863" fill="#0e1863" strokeWidth="0"  viewBox="0 0 192 512" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"></path></svg>
 
                   <Link href={`/${item}`} className="text-gray-400 hover:text-darkGray text-sm">
                     {item}
@@ -72,7 +72,7 @@ export default function Footer() {
             <ul className="space-y-2" >
               {["SMM", "Creative Copywriting", "Mobile Apps", "SEO Services"].map((item) => (
                 <li key={item} className="flex gap-1 items-center ">
-                <svg stroke="#0e1863" fill="#0e1863" stroke-width="0"  viewBox="0 0 192 512" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"></path></svg>
+                <svg stroke="#0e1863" fill="#0e1863" strokeWidth="0"  viewBox="0 0 192 512" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"><path d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"></path></svg>
 
                   <Link href={`/${item}`} className="text-gray-400 hover:text-darkGray text-sm">
                     {item}

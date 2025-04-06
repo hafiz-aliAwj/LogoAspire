@@ -60,7 +60,7 @@ export default function Navbar() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-lg">Services</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                   {services.length > 0 && services.map((service) => (
+                   {services?.length > 0 && services.map((service) => (
                       <Link href={`/${service.name.replace(" ", "-")}`} key={service._id}>
                         <ListItem title={service.name} />
                       </Link>

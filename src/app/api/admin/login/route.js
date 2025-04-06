@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
 import { serialize } from 'cookie';
-import { connectDB } from '../../lib/database';
+import { cookies } from 'next/headers';
 
 
 const SECRET_KEY = process.env.JWT_SECRET_KEY || 'your_secret_key'; // Use an environment variable for the secret key
@@ -18,7 +18,7 @@ export async function POST(req) {
     }
     const User = process.env.USER;
     const Password = process.env.PASSWORD;
-    console.log(User, Password);
+    console.log(1, User, Password);
     if(username != process.env.USER || password != process.env.PASSWORD) {
       return NextResponse.json(
         { message: 'Invalid credentials' },
@@ -34,22 +34,20 @@ export async function POST(req) {
     );
 
     // Set token in HTTP-only cookie
-    const cookie = serialize('auth_token', token, {
+    cookies().set({
+      name: 'auth_token',
+      value: token,
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-      maxAge: 36000, // 1 hour expiration for the token (same as the JWT expiration time)
+      secure: true,
+      sameSite: 'Lax',
       path: '/',
+      maxAge: 60 * 60 * 24, // 1 hour
     });
-
     // Send response with the cookie
     return new NextResponse(
       JSON.stringify({ message: 'Login successful' }),
       {
-        status: 200,
-        headers: {
-          'Set-Cookie': cookie,
-          'Content-Type': 'application/json',
-        },
+        status: 200
       }
     );
   } catch (error) {
